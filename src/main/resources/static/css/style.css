@@ -1,7 +1,8 @@
 @charset "UFT-8";
 *{margin: 0; padding: 0; box-sizing: border-box;}
-nav{height: 90px; color: #fff}
+nav{height: 90px; color: #fff; text-transform: uppercase;}
 a{cursor: pointer; font-weight: bold;}
+a.btn-nav:hover{color: #BA68CA;}
 .neo-section{
 	min-height: 700px;
 	background-size: cover !important;
@@ -25,3 +26,10 @@ a{cursor: pointer; font-weight: bold;}
 .botoes{padding: 2% 15%;}
 .btn:hover{color: #CE93D8; background-color: rgba(0,0,0,0.5);}
 .rodape{color: white; background-color: #4527A0; text-align: center; font-size: 1.25em; padding: 15px;}
+
+/* Responsividade */
+@media screen and (max-width: 667px){
+	.vm{width: 100%;}
+	nav{height: 100%;}
+	.neo-container{margin-top: 120px;}
+}
