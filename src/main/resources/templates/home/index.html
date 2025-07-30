@@ -6,12 +6,28 @@
 		<link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
 		<title>Projeto Academia</title>
 		<meta name="author" content="Paulo Hoff">
+		<link rel="stylesheet" href="css/style.css">
 	</head>	
-	<body>
-		<p>Olá mundo Spring</p>
-		<h1 th:text="${msg}"></h1>
-	
-		<button class="btn btn-primary">Teste</button>
+	<body>	
+		<header>
+			<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #4527A0;">
+				<a class="navbar-brand" href="#">
+					<img src="img/logo.png" width="80px" height="80px"/>
+				</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navMobile">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				
+				<div id="navMobile" class="navbar-collapse collapse justify-content-end">
+					<a class="nav-item nav-link">Home</a>
+					<a class="nav-item nav-link">Cadastrar Aluno</a>
+					<a class="nav-item nav-link">Pesquisar Aluno</a>
+					<a class="nav-item nav-link btn-danger">Sair</a>
+
+				</div>
+				
+			</nav>
+		</header>		
 		<script src="/webjars/jquery/3.5.1/jquery.min.js"></script>
 		<script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 	</body>
