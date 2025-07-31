@@ -2,6 +2,7 @@ package com.example.academia.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -9,6 +10,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.example.academia.model.Aluno;
 import com.example.academia.repositories.AlunoRepository;
+
+import jakarta.validation.Valid;
 
 @Controller
 public class AlunoController {
@@ -25,10 +28,16 @@ public class AlunoController {
 	}
 	
 	@PostMapping("InsertAlunos")
-	public ModelAndView inserirAluno(Aluno aluno) {
+	public ModelAndView inserirAluno(@Valid Aluno aluno, BindingResult br) {
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("redirect:/alunos-adicionados");
-		alunoRepository.save(aluno);
+		if(br.hasErrors()) {
+			mv.setViewName("Aluno/formAluno");
+			mv.addObject("aluno");
+		}
+		else {
+			mv.setViewName("redirect:/alunos-adicionados");
+			alunoRepository.save(aluno);
+		}
 		return mv;
 	}
 	
