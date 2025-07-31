@@ -1,11 +1,14 @@
 package com.example.academia.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.example.academia.model.Aluno;
@@ -72,5 +75,59 @@ public class AlunoController {
 		return "redirect:/alunos-adicionados";
 	}
 	
-
+	@GetMapping("filtro-alunos")
+	public ModelAndView filtroAlunos() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("Aluno/filtroAlunos");
+		mv.addObject("aluno", new Aluno());
+		return mv;
+	}
+	
+	@GetMapping("alunos-ativos")
+	public ModelAndView listaAlunosAtivos() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("Aluno/alunos-ativos");
+		mv.addObject("alunosAtivos", alunoRepository.findByStatusAtivos());
+		return mv;
+	}
+	
+	@GetMapping("alunos-inativos")
+	public ModelAndView listaAlunosInativos() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("Aluno/alunos-inativos");
+		mv.addObject("alunosInativos", alunoRepository.findByStatusInativos());
+		return mv;
+	}
+	
+	@GetMapping("alunos-cancelados")
+	public ModelAndView listaAlunosCancelados() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("Aluno/alunos-cancelados");
+		mv.addObject("alunosCancelados", alunoRepository.findByStatusCancelados());
+		return mv;
+	}
+	
+	@GetMapping("alunos-trancados")
+	public ModelAndView listaAlunosTrancados() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("Aluno/alunos-trancados");
+		mv.addObject("alunosTrancados", alunoRepository.findByStatusTrancados());
+		return mv;
+	}
+	
+	@PostMapping("pesquisar-aluno")
+	public ModelAndView pesquisarAluno(@RequestParam(required = false) String nome) {
+		ModelAndView mv = new ModelAndView();
+		List<Aluno> listaAlunos;
+		if(nome == null || nome.trim().isEmpty()) {
+			listaAlunos = alunoRepository.findAll();
+		}
+		else {
+			listaAlunos = alunoRepository.findByNomeContainingIgnoreCase(nome);
+		}
+		mv.addObject("ListaDeAlunos", listaAlunos);
+		mv.setViewName("Aluno/pesquisa-resultado");
+		return mv;
+	}
+	
 }

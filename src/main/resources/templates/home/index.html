@@ -5,7 +5,7 @@
 		<meta charset="UFT-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
-		<title>Projeto Academia</title>
+		<title>Projeto Academico</title>
 		<script src="https://kit.fontawesome.com/006642858d.js"></script>
 		<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;1,600&family=Ubuntu&family=Work+Sans&display=swap" rel="stylesheet">
 		<meta name="author" content="Paulo Hoff">
@@ -32,6 +32,29 @@
 		</div>
 		</div>
 		</section>
+		
+		<!-- Inicio do Modal -->
+			<div class="modal fade" id="modalPesquisa">
+				<div class="modal-dialog modal-lg">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title">Encontre um aluno</h5>
+							<button type="button" class="close" data-bs-dismiss="modal" aria-label="close">
+								<span>&times;</span>
+							</button>
+						</div>
+						<form method="post" action="pesquisar-aluno" th:object="${aluno}">
+							<div class="modal-body">
+								<input class="form-control" placeholder="Digite o nome do aluno" th:field="*{nome}">
+							</div>
+							<div class="modal-footer">
+								<button class="btn btn-danger" data-bs-dismiss="modal">Fechar</button>
+								<button type="submit" class="btn btn-success">Pesquisar</button>
+							</div>
+						</form>
+					</div>									
+				</div>
+			</div>
 		
 		<div th:replace="Fragmentos/fragmentos :: rodape"></div>
 				
