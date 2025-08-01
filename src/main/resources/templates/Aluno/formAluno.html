@@ -34,7 +34,7 @@
 		
 		
 		<!-- Curso -->
-			<div class="row">
+			<div class="row" style="margin-top: 10px;">
 				<div class="col-md-6 form-group offset-md-3">
 				<div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('curso')}">
 					<label class="validation-message" th:errors="*{curso}"></label>
@@ -48,7 +48,7 @@
 			</div>
 		
 		<!-- Matricula -->
-			<div class="row">
+			<div class="row" style="margin-top: 10px;">
 				<div class="col-md-6 form-group offset-md-3">
 				<div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('matricula')}">
 					<label class="validation-message" th:errors="*{matricula}"></label>
@@ -60,7 +60,7 @@
 			</div>
 			
 		<!-- Status -->
-			<div class="row" th:field="*{status}">
+			<div class="row" th:field="*{status}" style="margin-top: 10px;">
 				<div class="col-md-6 form-group offset-md-3">
 				<div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('status')}">
 					<label class="validation-message" th:errors="*{status}"></label>
@@ -74,7 +74,7 @@
 			</div>
 			
 		<!-- Turno -->
-			<div class="row">
+			<div class="row" style="margin-top: 10px;">
 				<div class="col-md-6 form-group offset-md-3">
 				<div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('turno')}">
 					<label class="validation-message" th:errors="*{turno}"></label>
@@ -86,9 +86,9 @@
 		
 
 		<div class="row">
-			<button type="submit" class="btn btn-success offset-md-5">SALVAR</button>
+			<button type="submit" class="btn btn-success offset-md-5" style="margin-top: 10px;">SALVAR</button>
 			&nbsp;&nbsp;&nbsp;&nbsp;
-			<a class="btn btn-danger">VOLTAR</a>
+			<a th:href="@{/index}" class="btn btn-danger" style="margin-top: 10px;">VOLTAR</a>
 		</div>
 			
 		</form>

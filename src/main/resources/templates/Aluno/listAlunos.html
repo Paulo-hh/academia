@@ -36,7 +36,7 @@
 					<td th:text="${alunos.matricula}"></td>
 					<td th:text="${alunos.status}"></td>
 					<td th:text="${alunos.turno}"></td>
-					<td>
+					<td style="width: 350px;">
 						<a class="btn btn-primary" th:href="@{alterar/{id}(id=${alunos.id})}">
 							<i class="fas fa-edit"></i> Editar </a>
 						<a class="btn btn-danger" th:href="@{excluir/{id}(id=${alunos.id})}">
@@ -45,6 +45,9 @@
 				</tr>
 			</tbody>
 			</table>
+			
+			<a style="margin-top: 0%; margin-left: 83%;" class="btn btn-dark" th:href="@{/filtro-alunos}">
+										<i class="fas fa-times"></i> Filtrar </a>
 			
 		</div>
 

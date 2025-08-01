@@ -11,7 +11,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.example.academia.model.Aluno;
 import com.example.academia.model.Usuario;
-import com.example.academia.repositories.UsuarioRepository;
 import com.example.academia.service.ServiceExc;
 import com.example.academia.service.ServiceUsuario;
 import com.example.academia.util.Util;
@@ -21,9 +20,6 @@ import jakarta.validation.Valid;
 
 @Controller
 public class UsuarioController {
-	
-	@Autowired
-	private UsuarioRepository usuarioRepository;
 	
 	@Autowired
 	private ServiceUsuario serviceUsuario;
@@ -36,15 +32,6 @@ public class UsuarioController {
 		return mv;
 	}
 	
-	/*
-	@GetMapping("/index")
-	public ModelAndView index() {
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("home/index");
-		mv.addObject("aluno", new Aluno());
-		return mv;
-	}
-	*/
 	@GetMapping("/index")
 	public ModelAndView index(HttpSession session) {
 	    Usuario usuarioLogado = (Usuario) session.getAttribute("UsuarioLogado");
@@ -65,6 +52,17 @@ public class UsuarioController {
 		mv.setViewName("Login/cadastro");
 		return mv;
 	}
+	
+
+	/*
+	@GetMapping("/index")
+	public ModelAndView index() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("home/index");
+		mv.addObject("aluno", new Aluno());
+		return mv;
+	}
+	*/
 	
 	@PostMapping("salvarUsuario")
 	public ModelAndView cadastrar(Usuario usuario) throws Exception {

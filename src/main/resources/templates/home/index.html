@@ -12,15 +12,7 @@
 		<link rel="stylesheet" href="css/style.css">
 	</head>	
 	
-	<body>
-		
-		<div style="margin: 0; text-align: center;" class="alert alert-warning alert-dismissible fade show" role="alert">
-		  <strong>Seja Bem Vindo!></span></strong>
-		  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-		    <span aria-hidden="true">&times;</span>
-		  </button>
-		</div>
-			
+	<body>			
 		<div th:replace="Fragmentos/fragmentos :: cabecalho"></div>
 		
 		<section class="neo-section" style="background-image: url('img/bg.jpg');">
@@ -28,13 +20,13 @@
 		<div class="center neo-container">
 			<h1 class="texto-centro">Sistema de Gerenciamento de Alunos</h1>
 			
-		<div class="botoes">
-			<div class="vm">
-				<h5 class="btnhome">CADASTRAR ALUNO</h5>
+		<div class="botoes" style="margin: 10px;">
+			<div class="vm" style="margin-top: 5%;">
+				<a th:href="@{inserirAlunos}" class="btnhome">CADASTRAR ALUNO</a>
 			</div>
 			
-			<div class="vm">
-				<h5 class="btnhome justify-content-center">ENCONTRAR ALUNO</h5>
+			<div class="vm" style="margin-top: 5%;">
+				<a th:href="@{alunos-adicionados}" class="btnhome justify-content-center">ENCONTRAR ALUNO</a>
 			</div>
 			<div class="clear"></div>
 		</div>
