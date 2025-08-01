@@ -8,12 +8,16 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.example.academia.model.Usuario;
 import com.example.academia.repositories.UsuarioRepository;
+import com.example.academia.service.ServiceUsuario;
 
 @Controller
 public class UsuarioController {
 	
 	@Autowired
 	private UsuarioRepository usuarioRepository;
+	
+	@Autowired
+	private ServiceUsuario serviceUsuario;
 	
 	@GetMapping("/")
 	public ModelAndView login() {
@@ -31,9 +35,9 @@ public class UsuarioController {
 	}
 	
 	@PostMapping("salvarUsuario")
-	public ModelAndView cadastrar(Usuario usuario) {
+	public ModelAndView cadastrar(Usuario usuario) throws Exception {
 		ModelAndView mv = new ModelAndView();
-		usuarioRepository.save(usuario);
+		serviceUsuario.salvarUsuario(usuario);
 		mv.setViewName("redirect:/");
 		return mv;
 	}
